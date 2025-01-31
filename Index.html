@@ -122,6 +122,9 @@
         const seconds = Math.floor(totalTimeInSeconds % 60);
         resultText = `Temps estimé : ${hours}h ${minutes}m ${seconds}s`;
       } else if (goalType === 'time') {
+        if (courseType === 'trail') {
+           totalDistanceMeters = distance * 1000;
+        }
         const hours = parseInt(document.getElementById('hours').value) || 0;
         const minutes = parseInt(document.getElementById('minutes').value) || 0;
         const seconds = parseInt(document.getElementById('seconds').value) || 0;
