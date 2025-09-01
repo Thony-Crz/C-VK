@@ -10,3 +10,9 @@ export function kmEffort(distanceKm: number, dPlusM: number): number {
   }
   return distanceKm + dPlusM / 100;
 }
+
+export type Format = 'court' | 'long';
+
+export function detectFormat(kmEffortValue: number): Format {
+  return kmEffortValue >= 60 ? 'long' : 'court';
+}
