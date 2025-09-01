@@ -121,7 +121,7 @@ export const App: React.FC = () => {
                 <div>{estimation.flatEquivalentKm.toFixed(2)}</div>
               </div>
               <div>
-                <div className="muted">Allure cible à plat</div>
+                <div className="muted">Allure cible</div>
                 <div>{estimation.allureAPlatMinPerKm != null ? `${minPerKmToPaceStr(estimation.allureAPlatMinPerKm)}/km` : '-'}</div>
               </div>
             </div>
