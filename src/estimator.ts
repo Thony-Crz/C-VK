@@ -12,6 +12,8 @@ export interface EstimateInput {
 
 export interface EstimateResult {
   kmEffort: number;
+  // Distance équivalente si c'était à plat (km)
+  flatEquivalentKm: number;
   formatCalcule: Format;
   eligibleParcours: boolean;
   vkCibleMinPerKm: number | null;
@@ -57,6 +59,7 @@ export function estimateCourse(input: EstimateInput): EstimateResult {
 
   return {
     kmEffort: kmEff,
+    flatEquivalentKm: kmEff,
     formatCalcule: format,
     eligibleParcours,
     vkCibleMinPerKm: vk ?? null,
@@ -68,4 +71,3 @@ export function estimateCourse(input: EstimateInput): EstimateResult {
     warnings
   };
 }
-

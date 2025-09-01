@@ -114,6 +114,17 @@ export const App: React.FC = () => {
               </div>
             </div>
 
+            <div className="row grid2">
+              <div>
+                <div className="muted">Équivalence à plat (km)</div>
+                <div>{estimation.flatEquivalentKm.toFixed(2)}</div>
+              </div>
+              <div>
+                <div className="muted">Allure cible à plat</div>
+                <div>{estimation.vkCibleMinPerKm != null ? `${estimation.vkCibleMinPerKm.toFixed(2)} min/km` : '-'}</div>
+              </div>
+            </div>
+
             {estimation.requiresFinishOnly ? (
               <div className="row">
                 <div className="muted">Objectif</div>
@@ -132,7 +143,7 @@ export const App: React.FC = () => {
                   </div>
                 </div>
                 <div className="row">
-                  <div className="muted">Temps cible</div>
+                  <div className="muted">Temps cible (équivalent à plat)</div>
                   <div>
                     {estimation.tempsCibleMinutes != null ? (
                       <>
@@ -169,4 +180,3 @@ export const App: React.FC = () => {
     </div>
   );
 };
-
