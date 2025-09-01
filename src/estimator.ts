@@ -19,6 +19,10 @@ export interface EstimateResult {
   vkCibleMinPerKm: number | null;
   tempsCibleMinutes: number | null;
   vitesseMoyKmH: number | null;
+  // Allure équivalente à plat (mm/km) = temps_cible / distance_km
+  allureAPlatMinPerKm: number | null;
+  // Vitesse équivalente à plat (km/h)
+  vitesseAPlatKmH: number | null;
   requiresFinishOnly: boolean;
   // Marges proposées ±1%, ±2%, ±3% (sur le temps)
   margesPct: number[];
@@ -50,6 +54,9 @@ export function estimateCourse(input: EstimateInput): EstimateResult {
   const temps = vk != null ? vk * kmEff : null;
   const vitesse = vk != null ? 60 / vk : null;
 
+  const allureAPlatMinPerKm = vk != null && input.distanceKm > 0 ? (temps! / input.distanceKm) : null;
+  const vitesseAPlatKmH = allureAPlatMinPerKm != null ? 60 / allureAPlatMinPerKm : null;
+
   const margesPct = [0.01, 0.02, 0.03];
   const tempsAvecMargeMinutes = margesPct.map((pct) => ({
     pct,
@@ -65,6 +72,8 @@ export function estimateCourse(input: EstimateInput): EstimateResult {
     vkCibleMinPerKm: vk ?? null,
     tempsCibleMinutes: temps,
     vitesseMoyKmH: vitesse,
+    allureAPlatMinPerKm,
+    vitesseAPlatKmH,
     requiresFinishOnly,
     margesPct,
     tempsAvecMargeMinutes,

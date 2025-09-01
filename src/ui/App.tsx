@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import { estimateCourse } from '../estimator';
 import type { Format } from '../core';
+import { minPerKmToPaceStr } from '../core';
 import type { Categorie, Sexe } from '../minimas';
 
 function toMinutesDisplay(min: number) {
@@ -121,7 +122,7 @@ export const App: React.FC = () => {
               </div>
               <div>
                 <div className="muted">Allure cible à plat</div>
-                <div>{estimation.vkCibleMinPerKm != null ? `${estimation.vkCibleMinPerKm.toFixed(2)} min/km` : '-'}</div>
+                <div>{estimation.allureAPlatMinPerKm != null ? `${minPerKmToPaceStr(estimation.allureAPlatMinPerKm)}/km` : '-'}</div>
               </div>
             </div>
 
@@ -135,7 +136,7 @@ export const App: React.FC = () => {
                 <div className="row grid2">
                   <div>
                     <div className="muted">VK cible (min/km)</div>
-                    <div>{estimation.vkCibleMinPerKm?.toFixed(2)}</div>
+                    <div>{estimation.vkCibleMinPerKm != null ? `${minPerKmToPaceStr(estimation.vkCibleMinPerKm)}/km` : '-'}</div>
                   </div>
                   <div>
                     <div className="muted">Vitesse moy. (km/h)</div>
