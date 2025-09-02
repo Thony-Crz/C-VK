@@ -1,8 +1,8 @@
 import React, { useMemo, useState } from 'react';
-import { estimateCourse } from '../estimator';
-import type { Format } from '../core';
-import { minPerKmToPaceStr } from '../core';
-import type { Categorie, Sexe } from '../minimas';
+import { estimateCourse } from '../estimator.js';
+import type { Format } from '../core.js';
+import { minPerKmToPaceStr } from '../core.js';
+import type { Categorie, Sexe } from '../minimas.js';
 
 function toMinutesDisplay(min: number) {
   const total = Math.round(min);
@@ -151,7 +151,7 @@ export const App: React.FC = () => {
                         <strong>{toMinutesDisplay(estimation.tempsCibleMinutes)}</strong>
                         <span className="muted"> (±1–3%)</span>
                         <div className="muted" style={{marginTop:6}}>
-                          {estimation.tempsAvecMargeMinutes.map(({pct,min,max}) => (
+                          {estimation.tempsAvecMargeMinutes.map(({pct, min, max}: {pct: number; min: number | null; max: number | null}) => (
                             <div key={pct}>±{Math.round(pct*100)}%: {min?toMinutesDisplay(min):'-'} → {max?toMinutesDisplay(max):'-'}</div>
                           ))}
                         </div>
@@ -164,7 +164,7 @@ export const App: React.FC = () => {
 
             {estimation.warnings.length > 0 && (
               <div className="row" style={{marginTop:10}}>
-                {estimation.warnings.map((w, i) => (
+                {estimation.warnings.map((w: string, i: number) => (
                   <div key={i} className="pill warn" style={{display:'block', marginBottom:6}}>{w}</div>
                 ))}
               </div>

@@ -1,5 +1,5 @@
-import { kmEffort, detectFormat, Format } from './core';
-import { getMinimaVK, Sexe, Categorie } from './minimas';
+import { kmEffort, detectFormat, Format } from './core.js';
+import { getMinimaVK, Sexe, Categorie } from './minimas.js';
 
 export interface EstimateInput {
   distanceKm: number;
