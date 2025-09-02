@@ -4,5 +4,10 @@ import react from '@vitejs/plugin-react';
 export default defineConfig({
   plugins: [react()],
   base: '/C-VK/',
+  build: {
+    rollupOptions: {
+      input: 'Index.html'
+    }
+  }
 });
 
