@@ -1,3 +1,5 @@
+https://thony-crz.github.io/C-VK/
+
 ## C‑VK — Estimation de qualification trail (FFA)
 
 Application web (React + TypeScript) pour estimer la vitesse/allure et le temps cible à tenir sur un trail labellisé FFA afin d’être qualifiable aux Championnats de France, avec règles FFA intégrées et minimas configurables par catégorie.
