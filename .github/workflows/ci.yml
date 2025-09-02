@@ -1,0 +1,109 @@
+name: CI/CD
+
+on:
+  push:
+    branches: [ "main" ]
+    tags:
+      - "v*.*.*"
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  ci:
+    name: Build, Lint, Test
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version: [18.x]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: |
+          if npm run | grep -qE "^\s*lint\s"; then
+            npm run lint
+          else
+            echo "No lint script found, skipping."
+          fi
+
+      - name: Build
+        run: |
+          if npm run | grep -qE "^\s*build\s"; then
+            npm run build
+          else
+            echo "No build script found, skipping."
+          fi
+
+      - name: Test
+        env:
+          CI: true
+        run: |
+          if npm run | grep -qE "^\s*test\s"; then
+            npm test -- --ci --reporters=default
+          else
+            echo "No test script found, skipping."
+          fi
+
+      - name: Upload build artifact
+        if: ${{ hashFiles('dist/**') != '' || hashFiles('build/**') != '' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-build
+          path: |
+            dist
+            build
+          if-no-files-found: ignore
+          retention-days: 7
+
+  deploy:
+    name: Deploy (on tag)
+    needs: ci
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/v')
+    environment:
+      name: production
+    permissions:
+      contents: read
+      deployments: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Use Node.js 18
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: npm
+
+      - name: Install and build
+        run: |
+          npm ci
+          if npm run | grep -qE "^\s*build\s"; then
+            npm run build
+          fi
+
+      # Replace this step with your real deployment logic (Docker/SSH/Cloud, etc.)
+      - name: Deployment step
+        run: |
+          echo "Add your deployment commands here (Docker push, SSH, cloud CLI, etc.)"
+
