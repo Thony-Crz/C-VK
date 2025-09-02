@@ -133,7 +133,12 @@ jobs:
 
       - name: Copy index.html to 404.html for SPA routing
         run: |
-          if [ -f "${{ env.SITE_DIR }}/index.html" ]; then
+          # Handle case-sensitive file names (Index.html vs index.html)
+          if [ -f "${{ env.SITE_DIR }}/Index.html" ]; then
+            cp "${{ env.SITE_DIR }}/Index.html" "${{ env.SITE_DIR }}/404.html"
+            # Also create lowercase version for compatibility
+            cp "${{ env.SITE_DIR }}/Index.html" "${{ env.SITE_DIR }}/index.html"
+          elif [ -f "${{ env.SITE_DIR }}/index.html" ]; then
             cp "${{ env.SITE_DIR }}/index.html" "${{ env.SITE_DIR }}/404.html"
           fi
 
