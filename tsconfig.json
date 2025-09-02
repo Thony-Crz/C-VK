@@ -12,5 +12,5 @@
     "rootDir": "src",
     "types": ["vitest/globals"]
   },
-  "include": ["src", "tests", "vitest.config.ts", "vite.config.ts", "index.html"]
+  "include": ["src"]
 }
