@@ -16,10 +16,10 @@ concurrency:
   group: ci-${{ github.ref }}
   cancel-in-progress: true
 
-  jobs:
-    ci:
-      name: Build, Lint, Test
-      runs-on: ubuntu-latest
+jobs:
+  ci:
+    name: Build, Lint, Test
+    runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
