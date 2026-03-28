@@ -92,6 +92,8 @@ const MINIMAS_2026_27: MinimaEntry[] = [
   { seasonId: '2026/27', sexe: 'F', categorie: 'M10' }
 ];
 
+export const CURRENT_SEASON = '2026/27';
+
 const TABLE: MinimaEntry[] = [...MINIMAS_2025_26, ...MINIMAS_2026_27];
 
 export function getMinimaVK(
