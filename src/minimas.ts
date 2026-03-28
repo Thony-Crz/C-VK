@@ -14,7 +14,7 @@ export interface MinimaEntry {
 
 const toMin = (m: number, s: number) => m + s / 60;
 
-// Table de base — saison 2025/26 (configurable ultérieurement)
+// Saison 2025/26
 const MINIMAS_2025_26: MinimaEntry[] = [
   // Espoirs / Seniors
   { seasonId: '2025/26', sexe: 'H', categorie: 'ES', vkMinMinPerKm: toMin(4, 10) },

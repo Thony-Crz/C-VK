@@ -3,6 +3,7 @@ import { estimateCourse } from '../estimator.js';
 import type { Format } from '../core.js';
 import { minPerKmToPaceStr } from '../core.js';
 import type { Categorie, Sexe } from '../minimas.js';
+import { CURRENT_SEASON } from '../minimas.js';
 
 function toMinutesDisplay(min: number) {
   const total = Math.round(min);
