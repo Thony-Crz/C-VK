@@ -17,7 +17,7 @@ export const App: React.FC = () => {
   const [dPlusM, setDPlusM] = useState('2000');
   const [sexe, setSexe] = useState<Sexe>('H');
   const [categorie, setCategorie] = useState<Categorie>('SE');
-  const [seasonId, setSeasonId] = useState(CURRENT_SEASON);
+  const [seasonId, setSeasonId] = useState('2026/27');
   const [requestedFormat, setRequestedFormat] = useState<Format | 'auto'>('auto');
 
   const parsed = useMemo(() => {
