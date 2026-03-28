@@ -16,7 +16,7 @@ export const App: React.FC = () => {
   const [dPlusM, setDPlusM] = useState('2000');
   const [sexe, setSexe] = useState<Sexe>('H');
   const [categorie, setCategorie] = useState<Categorie>('SE');
-  const [seasonId, setSeasonId] = useState('2025/26');
+  const [seasonId, setSeasonId] = useState('2026/27');
   const [requestedFormat, setRequestedFormat] = useState<Format | 'auto'>('auto');
 
   const parsed = useMemo(() => {
@@ -78,6 +78,7 @@ export const App: React.FC = () => {
           <div>
             <label>Saison</label>
             <select value={seasonId} onChange={(e) => setSeasonId(e.target.value)}>
+              <option value="2026/27">2026/27</option>
               <option value="2025/26">2025/26</option>
             </select>
           </div>

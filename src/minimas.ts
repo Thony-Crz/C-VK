@@ -52,7 +52,47 @@ const MINIMAS_2025_26: MinimaEntry[] = [
   { seasonId: '2025/26', sexe: 'F', categorie: 'M10' }
 ];
 
-const TABLE: MinimaEntry[] = [...MINIMAS_2025_26];
+// Table saison 2026/27
+const MINIMAS_2026_27: MinimaEntry[] = [
+  // U23 (Espoirs) / Seniors
+  { seasonId: '2026/27', sexe: 'H', categorie: 'ES', vkMinMinPerKm: toMin(3, 55) },
+  { seasonId: '2026/27', sexe: 'H', categorie: 'SE', vkMinMinPerKm: toMin(3, 45) },
+  { seasonId: '2026/27', sexe: 'F', categorie: 'ES', vkMinMinPerKm: toMin(4, 55) },
+  { seasonId: '2026/27', sexe: 'F', categorie: 'SE', vkMinMinPerKm: toMin(4, 45) },
+
+  // M0
+  { seasonId: '2026/27', sexe: 'H', categorie: 'M0', vkMinMinPerKm: toMin(3, 55) },
+  { seasonId: '2026/27', sexe: 'F', categorie: 'M0', vkMinMinPerKm: toMin(4, 55) },
+  // M1
+  { seasonId: '2026/27', sexe: 'H', categorie: 'M1', vkMinMinPerKm: toMin(4, 10) },
+  { seasonId: '2026/27', sexe: 'F', categorie: 'M1', vkMinMinPerKm: toMin(5, 15) },
+  // M2
+  { seasonId: '2026/27', sexe: 'H', categorie: 'M2', vkMinMinPerKm: toMin(4, 20) },
+  { seasonId: '2026/27', sexe: 'F', categorie: 'M2', vkMinMinPerKm: toMin(5, 30) },
+  // M3
+  { seasonId: '2026/27', sexe: 'H', categorie: 'M3', vkMinMinPerKm: toMin(4, 30) },
+  { seasonId: '2026/27', sexe: 'F', categorie: 'M3', vkMinMinPerKm: toMin(5, 50) },
+  // M4
+  { seasonId: '2026/27', sexe: 'H', categorie: 'M4', vkMinMinPerKm: toMin(4, 45) },
+  { seasonId: '2026/27', sexe: 'F', categorie: 'M4', vkMinMinPerKm: toMin(6, 15) },
+  // M5
+  { seasonId: '2026/27', sexe: 'H', categorie: 'M5', vkMinMinPerKm: toMin(5, 5) },
+  { seasonId: '2026/27', sexe: 'F', categorie: 'M5', vkMinMinPerKm: toMin(7, 0) },
+  // M6
+  { seasonId: '2026/27', sexe: 'H', categorie: 'M6', vkMinMinPerKm: toMin(5, 25) },
+  { seasonId: '2026/27', sexe: 'F', categorie: 'M6', vkMinMinPerKm: toMin(7, 30) },
+  // M7 à M10 — pas de minima
+  { seasonId: '2026/27', sexe: 'H', categorie: 'M7' },
+  { seasonId: '2026/27', sexe: 'F', categorie: 'M7' },
+  { seasonId: '2026/27', sexe: 'H', categorie: 'M8' },
+  { seasonId: '2026/27', sexe: 'F', categorie: 'M8' },
+  { seasonId: '2026/27', sexe: 'H', categorie: 'M9' },
+  { seasonId: '2026/27', sexe: 'F', categorie: 'M9' },
+  { seasonId: '2026/27', sexe: 'H', categorie: 'M10' },
+  { seasonId: '2026/27', sexe: 'F', categorie: 'M10' }
+];
+
+const TABLE: MinimaEntry[] = [...MINIMAS_2025_26, ...MINIMAS_2026_27];
 
 export function getMinimaVK(
   seasonId: string,
